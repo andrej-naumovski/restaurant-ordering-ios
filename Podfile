@@ -8,5 +8,10 @@ target 'restaurant-order' do
   use_frameworks!
 
   # Pods for restaurant-order
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FontAwesome.swift'
 
 end
