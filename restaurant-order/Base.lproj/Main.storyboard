@@ -29,21 +29,49 @@
                                     <action selector="onFacebookLoginButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YX0-XO-1ED"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There was an error while logging in. Please try again later." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCi-pp-4d0">
+                                <rect key="frame" x="0.0" y="405" width="375" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="tgw-HW-3Fl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.67480974740932642" green="0.20395401515622144" blue="0.21015504823676706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ACD-cT-nCx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0UO-wK-vr5"/>
                             <constraint firstItem="ACD-cT-nCx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q0I-9C-TGB"/>
+                            <constraint firstItem="ZCi-pp-4d0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k51-49-MIO"/>
+                            <constraint firstItem="ZCi-pp-4d0" firstAttribute="top" secondItem="ACD-cT-nCx" secondAttribute="bottom" constant="36" id="uwW-j9-uzm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="ZCi-pp-4d0" id="dnc-u3-8wo"/>
                         <outlet property="facebookLoginButton" destination="ACD-cT-nCx" id="2ob-pJ-6Lv"/>
+                        <segue destination="5Jx-cd-Nnc" kind="show" identifier="toRestaurantSelect" id="8VF-E0-jn0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-79.200000000000003" y="132.68365817091455"/>
+        </scene>
+        <!--Restaurant Select View Controller-->
+        <scene sceneID="7HJ-RN-YIh">
+            <objects>
+                <viewController id="5Jx-cd-Nnc" customClass="RestaurantSelectViewController" customModule="restaurant_order" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="105-In-ZRw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ULS-jo-rdU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fmR-WE-ptx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="681" y="133"/>
         </scene>
     </scenes>
 </document>

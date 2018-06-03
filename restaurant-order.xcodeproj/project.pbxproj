@@ -14,6 +14,7 @@
 		24C430CB20C2ED9B006EC940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C430CA20C2ED9B006EC940 /* Assets.xcassets */; };
 		24C430CE20C2ED9B006EC940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C430CC20C2ED9B006EC940 /* LaunchScreen.storyboard */; };
 		24C430DC20C2FC80006EC940 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C430DB20C2FC80006EC940 /* LoginViewModel.swift */; };
+		24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */; };
 		4B59CCF93C0D0E7A4D021950 /* Pods_restaurant_order.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB10058237F581E453CFA1 /* Pods_restaurant_order.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		24C430CD20C2ED9B006EC940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24C430CF20C2ED9B006EC940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C430DB20C2FC80006EC940 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSelectViewController.swift; sourceTree = "<group>"; };
 		56EB10058237F581E453CFA1 /* Pods_restaurant_order.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_restaurant_order.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FAAA6C6551AAB48FAA9E8E7 /* Pods-restaurant-order.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-restaurant-order.debug.xcconfig"; path = "Pods/Target Support Files/Pods-restaurant-order/Pods-restaurant-order.debug.xcconfig"; sourceTree = "<group>"; };
 		ED54744990A18570CBD8A105 /* Pods-restaurant-order.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-restaurant-order.release.xcconfig"; path = "Pods/Target Support Files/Pods-restaurant-order/Pods-restaurant-order.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				24C430C520C2ED9A006EC940 /* LoginViewController.swift */,
+				24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			files = (
 				24C430C620C2ED9A006EC940 /* LoginViewController.swift in Sources */,
 				244B5F2B20C3027600029BE4 /* FacebookLogin.swift in Sources */,
+				24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */,
 				24C430C420C2ED9A006EC940 /* AppDelegate.swift in Sources */,
 				24C430DC20C2FC80006EC940 /* LoginViewModel.swift in Sources */,
 			);

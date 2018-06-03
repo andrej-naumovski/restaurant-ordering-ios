@@ -12,6 +12,7 @@ import FontAwesome_swift
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var facebookLoginButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     
     private let loginViewModel = LoginViewModel()
 
@@ -20,19 +21,33 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // If user is logged in redirect to restaurant selection
+        if loginViewModel.isUserLoggedIn() {
+            performSegue(withIdentifier: "toRestaurantSelect", sender: nil)
+        }
+        
         // Facebook login button custom style
         facebookLoginButton.layer.cornerRadius = facebookLoginButton.bounds.size.width * 0.5
         facebookLoginButton.clipsToBounds = true
         facebookLoginButton.titleLabel?.font = UIFont.fontAwesome(ofSize: 40)
         facebookLoginButton.setTitle(String.fontAwesomeIcon(name: .facebook), for: .normal)
         
+        // Subscribe to changes on the facebookLogin model
         loginViewModel.facebookLogin
             .asObservable()
-            .subscribe { (facebookLogin) in
-                // TODO andrej-naumovski 02.06.2018: Implement logic for logging in/error handling here
-                print(facebookLogin)
+            .subscribe() { [unowned self] facebookLogin in
+                if let isLoggedIn = facebookLogin.element?.isLoggedIn {
+                    if isLoggedIn {
+                        self.performSegue(withIdentifier: "toRestaurantSelect", sender: nil)
+                    }
+                }
+                
+                if let didLoginFail = facebookLogin.element?.didLoginFail {
+                    self.errorLabel.isHidden = !didLoginFail
+                }
             }
-        }
+            .disposed(by: disposeBag)
+    }
     
     @IBAction func onFacebookLoginButtonClick(_ sender: Any) {
         loginViewModel.loginWithFacebook()
