@@ -35,10 +35,11 @@ class LoginViewController: UIViewController {
         // Subscribe to changes on the facebookLogin model
         loginViewModel.facebookLogin
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe() { [unowned self] facebookLogin in
                 if let isLoggedIn = facebookLogin.element?.isLoggedIn {
                     if isLoggedIn {
-                        self.performSegue(withIdentifier: "toRestaurantSelect", sender: nil)
+                        self.performSegue(withIdentifier: "restaurantSelection", sender: nil)
                     }
                 }
                 

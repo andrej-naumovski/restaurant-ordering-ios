@@ -9,10 +9,12 @@
 import UIKit
 
 class RestaurantSelectViewController: UIViewController {
-
+    @IBOutlet weak var scanQrCodeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // QR Code button additional style
+        scanQrCodeButton.layer.cornerRadius = scanQrCodeButton.bounds.height * 0.5
     }
 }

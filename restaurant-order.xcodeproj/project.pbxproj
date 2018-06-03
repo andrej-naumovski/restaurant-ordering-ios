@@ -15,6 +15,7 @@
 		24C430CE20C2ED9B006EC940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C430CC20C2ED9B006EC940 /* LaunchScreen.storyboard */; };
 		24C430DC20C2FC80006EC940 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C430DB20C2FC80006EC940 /* LoginViewModel.swift */; };
 		24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */; };
+		24EEC29C20C450D000DD0A60 /* location_symbol_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EEC29A20C450D000DD0A60 /* location_symbol_white.png */; };
 		4B59CCF93C0D0E7A4D021950 /* Pods_restaurant_order.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB10058237F581E453CFA1 /* Pods_restaurant_order.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		24C430CF20C2ED9B006EC940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C430DB20C2FC80006EC940 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSelectViewController.swift; sourceTree = "<group>"; };
+		24EEC29A20C450D000DD0A60 /* location_symbol_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_symbol_white.png; sourceTree = "<group>"; };
 		56EB10058237F581E453CFA1 /* Pods_restaurant_order.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_restaurant_order.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FAAA6C6551AAB48FAA9E8E7 /* Pods-restaurant-order.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-restaurant-order.debug.xcconfig"; path = "Pods/Target Support Files/Pods-restaurant-order/Pods-restaurant-order.debug.xcconfig"; sourceTree = "<group>"; };
 		ED54744990A18570CBD8A105 /* Pods-restaurant-order.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-restaurant-order.release.xcconfig"; path = "Pods/Target Support Files/Pods-restaurant-order/Pods-restaurant-order.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		24C430C220C2ED9A006EC940 /* restaurant-order */ = {
 			isa = PBXGroup;
 			children = (
+				24EEC29920C450D000DD0A60 /* res */,
 				24C430DA20C2FC6C006EC940 /* viewmodels */,
 				24C430D920C2FC66006EC940 /* models */,
 				24C430D820C2FC5B006EC940 /* controllers */,
@@ -82,8 +85,8 @@
 		24C430D820C2FC5B006EC940 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				24C430C520C2ED9A006EC940 /* LoginViewController.swift */,
 				24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */,
+				24C430C520C2ED9A006EC940 /* LoginViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -102,6 +105,22 @@
 				24C430DB20C2FC80006EC940 /* LoginViewModel.swift */,
 			);
 			path = viewmodels;
+			sourceTree = "<group>";
+		};
+		24EEC29920C450D000DD0A60 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				24EEC29A20C450D000DD0A60 /* location_symbol_white.png */,
+				24EEC29B20C450D000DD0A60 /* images */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		24EEC29B20C450D000DD0A60 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		2E0A25D9D6355CC7F9C356CB /* Pods */ = {
@@ -183,6 +202,7 @@
 			files = (
 				24C430CE20C2ED9B006EC940 /* LaunchScreen.storyboard in Resources */,
 				24C430CB20C2ED9B006EC940 /* Assets.xcassets in Resources */,
+				24EEC29C20C450D000DD0A60 /* location_symbol_white.png in Resources */,
 				24C430C920C2ED9A006EC940 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
