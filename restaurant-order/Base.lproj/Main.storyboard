@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.67480974740932642" green="0.20395401515622144" blue="0.21015504823676706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.67450980392156867" green="0.20392156862745098" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ACD-cT-nCx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0UO-wK-vr5"/>
                             <constraint firstItem="ACD-cT-nCx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Q0I-9C-TGB"/>
@@ -51,7 +52,7 @@
                     <connections>
                         <outlet property="errorLabel" destination="ZCi-pp-4d0" id="dnc-u3-8wo"/>
                         <outlet property="facebookLoginButton" destination="ACD-cT-nCx" id="2ob-pJ-6Lv"/>
-                        <segue destination="5Jx-cd-Nnc" kind="show" identifier="toRestaurantSelect" id="8VF-E0-jn0"/>
+                        <segue destination="5Jx-cd-Nnc" kind="presentation" identifier="restaurantSelection" id="vPC-UG-kZl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -65,13 +66,70 @@
                     <view key="view" contentMode="scaleToFill" id="105-In-ZRw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_symbol_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="Log-NG-ctJ">
+                                <rect key="frame" x="97" y="160" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Log-NG-ctJ" secondAttribute="height" multiplier="1:1" id="pHC-io-mVg"/>
+                                    <constraint firstAttribute="width" constant="180" id="sv1-Qo-R4U"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your location is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87c-ah-Ofb">
+                                <rect key="frame" x="122" y="348" width="131.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnG-rA-5WA">
+                                <rect key="frame" x="90" y="380" width="196.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTm-xc-faI">
+                                <rect key="frame" x="88" y="433" width="200" height="48"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="eGx-jX-CPZ"/>
+                                    <constraint firstAttribute="width" constant="200" id="nVA-p8-rbl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="SCAN QR CODE">
+                                    <color key="titleColor" red="0.62352941176470589" green="0.23921568627450981" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQs-Ot-8a0">
+                                <rect key="frame" x="79" y="489" width="216" height="30"/>
+                                <state key="normal" title="Not here? Choose your location">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.68627450980392157" green="0.2627450980392157" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="87c-ah-Ofb" firstAttribute="top" secondItem="Log-NG-ctJ" secondAttribute="bottom" constant="8" id="J0Y-FR-LUh"/>
+                            <constraint firstItem="tQs-Ot-8a0" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="LFt-XL-Ykm"/>
+                            <constraint firstItem="tQs-Ot-8a0" firstAttribute="top" secondItem="yTm-xc-faI" secondAttribute="bottom" constant="8" id="QLq-ct-j5M"/>
+                            <constraint firstItem="Log-NG-ctJ" firstAttribute="top" secondItem="ULS-jo-rdU" secondAttribute="top" constant="140" id="Sts-bp-Ya8"/>
+                            <constraint firstItem="VnG-rA-5WA" firstAttribute="top" secondItem="87c-ah-Ofb" secondAttribute="bottom" constant="8" id="UMN-bF-Iut"/>
+                            <constraint firstItem="Log-NG-ctJ" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="VRh-iN-CEF"/>
+                            <constraint firstItem="yTm-xc-faI" firstAttribute="top" secondItem="VnG-rA-5WA" secondAttribute="bottom" constant="24" id="a5F-dU-BSk"/>
+                            <constraint firstItem="87c-ah-Ofb" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="bHx-ya-WRV"/>
+                            <constraint firstItem="VnG-rA-5WA" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="evT-0x-WmC"/>
+                            <constraint firstItem="yTm-xc-faI" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="uBC-iU-ws5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ULS-jo-rdU"/>
                     </view>
+                    <connections>
+                        <outlet property="scanQrCodeButton" destination="yTm-xc-faI" id="NrS-OS-F3W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmR-WE-ptx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="681" y="133"/>
+            <point key="canvasLocation" x="680.79999999999995" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="location_symbol_white.png" width="512" height="512"/>
+    </resources>
 </document>
