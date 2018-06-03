@@ -61,5 +61,7 @@
         <string>fbauth2</string>
         <string>fbshareextension</string>
     </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>The application needs your permission to get your location.</string>
 </dict>
 </plist>

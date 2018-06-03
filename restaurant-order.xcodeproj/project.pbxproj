@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		244B5F2B20C3027600029BE4 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244B5F2A20C3027600029BE4 /* FacebookLogin.swift */; };
+		24AD20B720C46C71005F2345 /* LatLng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD20B620C46C71005F2345 /* LatLng.swift */; };
+		24AD20B920C46CC2005F2345 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD20B820C46CC2005F2345 /* LocationViewModel.swift */; };
 		24C430C420C2ED9A006EC940 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C430C320C2ED9A006EC940 /* AppDelegate.swift */; };
 		24C430C620C2ED9A006EC940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C430C520C2ED9A006EC940 /* LoginViewController.swift */; };
 		24C430C920C2ED9A006EC940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C430C720C2ED9A006EC940 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		244B5F2A20C3027600029BE4 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
+		24AD20B620C46C71005F2345 /* LatLng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatLng.swift; sourceTree = "<group>"; };
+		24AD20B820C46CC2005F2345 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		24C430C020C2ED9A006EC940 /* restaurant-order.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "restaurant-order.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C430C320C2ED9A006EC940 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24C430C520C2ED9A006EC940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				244B5F2A20C3027600029BE4 /* FacebookLogin.swift */,
+				24AD20B620C46C71005F2345 /* LatLng.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -103,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				24C430DB20C2FC80006EC940 /* LoginViewModel.swift */,
+				24AD20B820C46CC2005F2345 /* LocationViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -271,7 +277,9 @@
 				244B5F2B20C3027600029BE4 /* FacebookLogin.swift in Sources */,
 				24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */,
 				24C430C420C2ED9A006EC940 /* AppDelegate.swift in Sources */,
+				24AD20B920C46CC2005F2345 /* LocationViewModel.swift in Sources */,
 				24C430DC20C2FC80006EC940 /* LoginViewModel.swift in Sources */,
+				24AD20B720C46C71005F2345 /* LatLng.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
