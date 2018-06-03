@@ -7,6 +7,11 @@
 //
 
 struct FacebookLogin {
-    var isLoggedIn = false
-    var didLoginFail = false
+    var isLoggedIn: Bool
+    var didLoginFail: Bool
+    
+    init(isLoggedIn: Bool = false, didLoginFail: Bool = false) {
+        self.isLoggedIn = isLoggedIn
+        self.didLoginFail = didLoginFail
+    }
 }
