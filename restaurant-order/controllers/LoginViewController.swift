@@ -35,15 +35,15 @@ class LoginViewController: UIViewController {
         // Subscribe to changes on the facebookLogin model
         loginViewModel.facebookLogin
             .asObservable()
-            .subscribe() { [weak self] facebookLogin in
+            .subscribe() { [unowned self] facebookLogin in
                 if let isLoggedIn = facebookLogin.element?.isLoggedIn {
                     if isLoggedIn {
-                        self?.performSegue(withIdentifier: "toRestaurantSelect", sender: nil)
+                        self.performSegue(withIdentifier: "toRestaurantSelect", sender: nil)
                     }
                 }
                 
                 if let didLoginFail = facebookLogin.element?.didLoginFail {
-                    self?.errorLabel.isHidden = !didLoginFail
+                    self.errorLabel.isHidden = !didLoginFail
                 }
             }
             .disposed(by: disposeBag)
