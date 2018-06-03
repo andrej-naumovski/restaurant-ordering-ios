@@ -10,7 +10,9 @@ import RxSwift
 import CoreLocation
 
 class LocationViewModel: NSObject, CLLocationManagerDelegate {
-    var latLng = Variable<LatLng?>(nil)
+    let latLng = Variable<LatLng?>(nil)
+    let isPermissionDenied = Variable<Bool>(false)
+    
     private var locationManager = CLLocationManager()
     
     override init() {
@@ -22,7 +24,14 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
     
     func updateUserLocation() {
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
+            switch CLLocationManager.authorizationStatus() {
+            case .authorizedWhenInUse, .authorizedAlways:
+                locationManager.startUpdatingLocation()
+            case .denied, .notDetermined, .restricted:
+                isPermissionDenied.value = true
+            }
+        } else {
+            isPermissionDenied.value = true
         }
     }
     

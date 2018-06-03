@@ -117,16 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				24EEC29A20C450D000DD0A60 /* location_symbol_white.png */,
-				24EEC29B20C450D000DD0A60 /* images */,
 			);
 			path = res;
-			sourceTree = "<group>";
-		};
-		24EEC29B20C450D000DD0A60 /* images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 		2E0A25D9D6355CC7F9C356CB /* Pods */ = {

@@ -104,6 +104,15 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePm-et-hRT">
+                                <rect key="frame" x="132.5" y="633" width="111" height="30"/>
+                                <state key="normal" title="Refresh location">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRefreshLocationClick:" destination="5Jx-cd-Nnc" eventType="touchUpInside" id="zgN-y5-NuJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.68627450980392157" green="0.2627450980392157" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -116,6 +125,8 @@
                             <constraint firstItem="yTm-xc-faI" firstAttribute="top" secondItem="VnG-rA-5WA" secondAttribute="bottom" constant="24" id="a5F-dU-BSk"/>
                             <constraint firstItem="87c-ah-Ofb" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="bHx-ya-WRV"/>
                             <constraint firstItem="VnG-rA-5WA" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="evT-0x-WmC"/>
+                            <constraint firstItem="ePm-et-hRT" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="oKx-ZN-I7U"/>
+                            <constraint firstItem="ePm-et-hRT" firstAttribute="bottom" secondItem="ULS-jo-rdU" secondAttribute="bottom" constant="-4" id="tt3-Dh-Fy2"/>
                             <constraint firstItem="yTm-xc-faI" firstAttribute="centerX" secondItem="105-In-ZRw" secondAttribute="centerX" id="uBC-iU-ws5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ULS-jo-rdU"/>
