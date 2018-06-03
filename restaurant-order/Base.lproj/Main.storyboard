@@ -132,6 +132,7 @@
                         <viewLayoutGuide key="safeArea" id="ULS-jo-rdU"/>
                     </view>
                     <connections>
+                        <outlet property="chooseLocationButton" destination="tQs-Ot-8a0" id="QeF-5D-VHe"/>
                         <outlet property="scanQrCodeButton" destination="yTm-xc-faI" id="NrS-OS-F3W"/>
                     </connections>
                 </viewController>

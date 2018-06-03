@@ -12,6 +12,7 @@ import RxCocoa
 
 class RestaurantSelectViewController: UIViewController {
     @IBOutlet weak var scanQrCodeButton: UIButton!
+    @IBOutlet weak var chooseLocationButton: UIButton!
     
     private let locationViewModel = LocationViewModel()
     
@@ -22,6 +23,20 @@ class RestaurantSelectViewController: UIViewController {
 
         // QR Code button additional style
         scanQrCodeButton.layer.cornerRadius = scanQrCodeButton.bounds.height * 0.5
+        
+        scanQrCodeButton.setTitleColor(UIColor.gray, for: .disabled)
+        chooseLocationButton.setTitleColor(UIColor.gray, for: .disabled)
+        
+        // Bind buttons' isEnabled to the negated value of locationViewModel.isPermissionDenied
+        let isPermissionGranted = locationViewModel.isPermissionDenied.asObservable().map { !$0 }
+        
+        isPermissionGranted
+            .bind(to: scanQrCodeButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        isPermissionGranted
+            .bind(to: chooseLocationButton.rx.isEnabled)
+            .disposed(by: disposeBag)
         
         // Initiate fetching of location
         locationViewModel.updateUserLocation()
@@ -60,6 +75,10 @@ class RestaurantSelectViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Go to Settings", style: UIAlertActionStyle.default, handler: { [unowned self] _ in
             self.openSettingsOnDeniedPermission()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: { _ in
+            alert.dismiss(animated: true, completion: nil)
         }))
         
         self.present(alert, animated: true, completion: nil)

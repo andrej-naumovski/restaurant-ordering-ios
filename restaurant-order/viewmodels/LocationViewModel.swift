@@ -27,6 +27,7 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
             switch CLLocationManager.authorizationStatus() {
             case .authorizedWhenInUse, .authorizedAlways:
                 locationManager.startUpdatingLocation()
+                isPermissionDenied.value = false
             case .denied, .notDetermined, .restricted:
                 isPermissionDenied.value = true
             }
