@@ -12,6 +12,7 @@ import CoreLocation
 class LocationViewModel: NSObject, CLLocationManagerDelegate {
     let latLng = Variable<LatLng?>(nil)
     let isPermissionDenied = Variable<Bool>(false)
+    let isPermissionChecked = Variable<Bool>(false)
     
     private var locationManager = CLLocationManager()
     
@@ -28,11 +29,14 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
             case .authorizedWhenInUse, .authorizedAlways:
                 locationManager.startUpdatingLocation()
                 isPermissionDenied.value = false
-            case .denied, .notDetermined, .restricted:
-                isPermissionDenied.value = true
+                isPermissionChecked.value = true
+            case .denied, .restricted:
+                if isPermissionChecked.value {
+                    isPermissionDenied.value = true
+                }
+            default:
+                return
             }
-        } else {
-            isPermissionDenied.value = true
         }
     }
     
@@ -40,6 +44,19 @@ class LocationViewModel: NSObject, CLLocationManagerDelegate {
         if let userLocation = locations.last?.coordinate {
             latLng.value = LatLng(latitude: userLocation.latitude, longitude: userLocation.longitude)
             locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedAlways, .authorizedWhenInUse:
+            isPermissionChecked.value = true
+            isPermissionDenied.value = false
+        case .denied, .restricted:
+            isPermissionDenied.value = true
+            isPermissionChecked.value = true
         }
     }
 }

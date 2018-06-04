@@ -38,9 +38,6 @@ class RestaurantSelectViewController: UIViewController {
             .bind(to: chooseLocationButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        // Initiate fetching of location
-        locationViewModel.updateUserLocation()
-        
         // Subscribe to changes of latLng
         locationViewModel.latLng
             .asObservable()
@@ -54,16 +51,25 @@ class RestaurantSelectViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // Handle denied permission
-        locationViewModel.isPermissionDenied
-            .asObservable()
-            .subscribe() { [unowned self] isPermissionDenied in
-                if isPermissionDenied.element! {
-                    DispatchQueue.main.async {
-                        self.showPermissionDeniedAlert()
-                    }
+        Observable
+            .combineLatest(locationViewModel.isPermissionChecked.asObservable(), locationViewModel.isPermissionDenied.asObservable())
+            .observeOn(MainScheduler.instance)
+            .subscribe() { [unowned self] in
+                let isPermissionChecked = $0.element?.0 ?? false
+                let isPermissionDenied = $0.element?.1 ?? false
+                                
+                print(isPermissionChecked, isPermissionDenied)
+                
+                if isPermissionChecked && isPermissionDenied {
+                    self.showPermissionDeniedAlert()
                 }
             }
             .disposed(by: disposeBag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Initiate fetching of location
+        locationViewModel.updateUserLocation()
     }
     
     @IBAction func onRefreshLocationClick(_ sender: Any) {
