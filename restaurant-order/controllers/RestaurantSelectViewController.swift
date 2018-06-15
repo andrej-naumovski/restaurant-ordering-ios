@@ -9,8 +9,14 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import AVFoundation
 
 class RestaurantSelectViewController: UIViewController {
+    enum Permission: String {
+        case camera = "Camera"
+        case location = "Location"
+    }
+    
     @IBOutlet weak var scanQrCodeButton: UIButton!
     @IBOutlet weak var chooseLocationButton: UIButton!
     
@@ -61,7 +67,7 @@ class RestaurantSelectViewController: UIViewController {
                 print(isPermissionChecked, isPermissionDenied)
                 
                 if isPermissionChecked && isPermissionDenied {
-                    self.showPermissionDeniedAlert()
+                    self.showPermissionDeniedAlert(for: .location)
                 }
             }
             .disposed(by: disposeBag)
@@ -76,8 +82,25 @@ class RestaurantSelectViewController: UIViewController {
         locationViewModel.updateUserLocation()
     }
     
-    private func showPermissionDeniedAlert() {
-        let alert = UIAlertController(title: "Location permission denied", message: "The application requires your location to work.", preferredStyle: UIAlertControllerStyle.alert)
+    @IBAction func onScanQrCodeClick(_ sender: Any) {
+        self.askForCameraPermission {
+            self.performSegue(withIdentifier: "toQRCodeScanner", sender: nil)
+        }
+    }
+    
+    private func askForCameraPermission(_ handler: @escaping () -> Void) {
+        AVCaptureDevice.requestAccess(for: .video) { [unowned self] response in
+            if response {
+                handler()
+            } else {
+                self.showPermissionDeniedAlert(for: .camera)
+            }
+            
+        }
+    }
+    
+    private func showPermissionDeniedAlert(for permission: Permission) {
+        let alert = UIAlertController(title: "\(permission.rawValue) permission denied", message: "The application requires your location to work.", preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Go to Settings", style: UIAlertActionStyle.default, handler: { [unowned self] _ in
             self.openSettingsOnDeniedPermission()
