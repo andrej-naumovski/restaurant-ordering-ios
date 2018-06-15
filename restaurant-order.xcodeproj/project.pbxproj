@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24498C1920C7043C00B612FD /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24498C1820C7043C00B612FD /* QRCodeScanViewController.swift */; };
+		24498C1B20C704A000B612FD /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24498C1A20C704A000B612FD /* TableData.swift */; };
+		24498C1F20C70C6C00B612FD /* QRCodeScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24498C1E20C70C6C00B612FD /* QRCodeScanViewModel.swift */; };
 		244B5F2B20C3027600029BE4 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244B5F2A20C3027600029BE4 /* FacebookLogin.swift */; };
 		24AD20B720C46C71005F2345 /* LatLng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD20B620C46C71005F2345 /* LatLng.swift */; };
 		24AD20B920C46CC2005F2345 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD20B820C46CC2005F2345 /* LocationViewModel.swift */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24498C1820C7043C00B612FD /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
+		24498C1A20C704A000B612FD /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
+		24498C1E20C70C6C00B612FD /* QRCodeScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewModel.swift; sourceTree = "<group>"; };
 		244B5F2A20C3027600029BE4 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		24AD20B620C46C71005F2345 /* LatLng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatLng.swift; sourceTree = "<group>"; };
 		24AD20B820C46CC2005F2345 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 			children = (
 				24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */,
 				24C430C520C2ED9A006EC940 /* LoginViewController.swift */,
+				24498C1820C7043C00B612FD /* QRCodeScanViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -100,6 +107,7 @@
 			children = (
 				244B5F2A20C3027600029BE4 /* FacebookLogin.swift */,
 				24AD20B620C46C71005F2345 /* LatLng.swift */,
+				24498C1A20C704A000B612FD /* TableData.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -109,6 +117,7 @@
 			children = (
 				24C430DB20C2FC80006EC940 /* LoginViewModel.swift */,
 				24AD20B820C46CC2005F2345 /* LocationViewModel.swift */,
+				24498C1E20C70C6C00B612FD /* QRCodeScanViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -266,8 +275,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				24C430C620C2ED9A006EC940 /* LoginViewController.swift in Sources */,
+				24498C1F20C70C6C00B612FD /* QRCodeScanViewModel.swift in Sources */,
 				244B5F2B20C3027600029BE4 /* FacebookLogin.swift in Sources */,
 				24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */,
+				24498C1B20C704A000B612FD /* TableData.swift in Sources */,
+				24498C1920C7043C00B612FD /* QRCodeScanViewController.swift in Sources */,
 				24C430C420C2ED9A006EC940 /* AppDelegate.swift in Sources */,
 				24AD20B920C46CC2005F2345 /* LocationViewModel.swift in Sources */,
 				24C430DC20C2FC80006EC940 /* LoginViewModel.swift in Sources */,
@@ -417,6 +429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S2YPU2BD58;
 				INFOPLIST_FILE = "restaurant-order/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -435,6 +448,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S2YPU2BD58;
 				INFOPLIST_FILE = "restaurant-order/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

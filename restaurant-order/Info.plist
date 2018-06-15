@@ -63,5 +63,7 @@
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>The application needs your permission to get your location.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>The application needs your permission to use your camera to scan the QR code.</string>
 </dict>
 </plist>
