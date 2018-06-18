@@ -8,6 +8,7 @@
 
 import AVFoundation
 import RxSwift
+import ObjectMapper
 
 class QRCodeScanViewModel: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     enum CameraError: Error {
@@ -44,7 +45,7 @@ class QRCodeScanViewModel: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         let metadataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if let qrCodeValue = metadataObject.stringValue {
-            guard let tableData = try? JSONDecoder().decode(TableData.self, from: qrCodeValue.data(using: .utf8)!) else {
+            guard let tableData = Mapper<TableData>().map(JSONString: qrCodeValue) else {
                 print("Invalid QR code")
                 //TODO andrej-naumovski 15.06.2018: Handle error redirection here
                 return
