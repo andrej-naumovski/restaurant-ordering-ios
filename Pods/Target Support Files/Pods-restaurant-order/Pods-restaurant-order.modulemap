@@ -1,0 +1,6 @@
+framework module Pods_restaurant_order {
+  umbrella header "Pods-restaurant-order-umbrella.h"
+
+  export *
+  module * { export * }
+}
