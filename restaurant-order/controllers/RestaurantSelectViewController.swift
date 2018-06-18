@@ -24,6 +24,8 @@ class RestaurantSelectViewController: UIViewController {
     private let locationViewModel = LocationViewModel()
     private let restaurantViewModel = RestaurantViewModel()
     
+    private var activityIndicator: UIActivityIndicatorView?
+    
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -49,11 +51,15 @@ class RestaurantSelectViewController: UIViewController {
         // Bind current restaurant name to field
         restaurantViewModel.selectedRestaurant
             .asObservable()
-            .map { $0?.name }
+            .map { [unowned self] in
+                self.activityIndicator?.removeFromSuperview()
+                return $0?.name ?? ""
+            }
             .bind(to: selectedRestaurantName.rx.text)
             .disposed(by: disposeBag)
         
         // Subscribe to changes of latLng
+        self.activityIndicator = self.createAndStartActivityIndicator()
         locationViewModel.latLng
             .asObservable()
             .observeOn(MainScheduler.instance)
@@ -71,8 +77,6 @@ class RestaurantSelectViewController: UIViewController {
             .subscribe() { [unowned self] in
                 let isPermissionChecked = $0.element?.0 ?? false
                 let isPermissionDenied = $0.element?.1 ?? false
-                                
-                print(isPermissionChecked, isPermissionDenied)
                 
                 if isPermissionChecked && isPermissionDenied {
                     self.showPermissionDeniedAlert(for: .location)
@@ -87,6 +91,7 @@ class RestaurantSelectViewController: UIViewController {
     }
     
     @IBAction func onRefreshLocationClick(_ sender: Any) {
+        activityIndicator = createAndStartActivityIndicator()
         locationViewModel.updateUserLocation()
     }
     
@@ -131,5 +136,25 @@ class RestaurantSelectViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func createAndStartActivityIndicator() -> UIActivityIndicatorView {
+        if let existingActivityIndicator = self.activityIndicator {
+            view.addSubview(existingActivityIndicator)
+            existingActivityIndicator.startAnimating()
+            return existingActivityIndicator
+        }
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.frame = view.bounds
+        
+        activityIndicator.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.7)
+        
+        activityIndicator.startAnimating()
+        
+        return activityIndicator
     }
 }
