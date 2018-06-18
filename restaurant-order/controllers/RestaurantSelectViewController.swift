@@ -19,8 +19,10 @@ class RestaurantSelectViewController: UIViewController {
     
     @IBOutlet weak var scanQrCodeButton: UIButton!
     @IBOutlet weak var chooseLocationButton: UIButton!
+    @IBOutlet weak var selectedRestaurantName: UILabel!
     
     private let locationViewModel = LocationViewModel()
+    private let restaurantViewModel = RestaurantViewModel()
     
     private let disposeBag = DisposeBag()
     
@@ -44,14 +46,20 @@ class RestaurantSelectViewController: UIViewController {
             .bind(to: chooseLocationButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
+        // Bind current restaurant name to field
+        restaurantViewModel.selectedRestaurant
+            .asObservable()
+            .map { $0?.name }
+            .bind(to: selectedRestaurantName.rx.text)
+            .disposed(by: disposeBag)
+        
         // Subscribe to changes of latLng
         locationViewModel.latLng
             .asObservable()
             .observeOn(MainScheduler.instance)
-            .subscribe() {
+            .subscribe() { [unowned self] in
                 if let latLng = $0.element! {
-                    //TODO andrej-naumovski 03.06.2018: Add functionality for fetching user location here
-                    print(latLng)
+                    self.restaurantViewModel.fetchNearestRestaurants(userLocation: latLng)
                 }
             }
             .disposed(by: disposeBag)

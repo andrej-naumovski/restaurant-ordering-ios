@@ -13,5 +13,6 @@ target 'restaurant-order' do
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FontAwesome.swift'
+    pod 'RxAlamofire+ObjectMapper'
 
 end

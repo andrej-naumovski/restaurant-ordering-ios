@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.7.2)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -18,6 +19,15 @@ PODS:
   - FBSDKLoginKit (4.33.0):
     - FBSDKCoreKit
   - FontAwesome.swift (1.3.2)
+  - ObjectMapper (3.2.0)
+  - RxAlamofire (4.2.0):
+    - RxAlamofire/Core (= 4.2.0)
+  - "RxAlamofire+ObjectMapper (0.1.3.1)":
+    - ObjectMapper (~> 3)
+    - RxAlamofire (~> 4)
+  - RxAlamofire/Core (4.2.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
@@ -26,30 +36,39 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FontAwesome.swift
+  - "RxAlamofire+ObjectMapper"
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Bolts
     - FacebookCore
     - FacebookLogin
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FontAwesome.swift
+    - ObjectMapper
+    - RxAlamofire
+    - "RxAlamofire+ObjectMapper"
     - RxCocoa
     - RxSwift
 
 SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
   FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
   FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
   FontAwesome.swift: b4e4c8ccbbecb12f9b592bc533ff237af3706667
+  ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
+  RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
+  "RxAlamofire+ObjectMapper": 7f98956180974d8decd36542eaf595148958f6fb
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: c5dec1a88bbef610dc91adf4d17a1ae13c0fa93d
+PODFILE CHECKSUM: 367c3c067042dfccfc2e49ea99429ef2d15b17e2
 
 COCOAPODS: 1.5.2

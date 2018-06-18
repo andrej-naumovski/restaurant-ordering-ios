@@ -6,14 +6,26 @@
 //  Copyright © 2018 Andrej Naumovski. All rights reserved.
 //
 
-struct TableData: Decodable {
-    var restaurantName: String
-    var tableNumber: Int
-    var actionUrl: String
+import ObjectMapper
+
+struct TableData: Mappable {
+    var restaurantName: String?
+    var tableNumber: Int?
+    var actionUrl: String?
     
     init(restaurantName: String = "", tableNumber: Int = -1, actionUrl: String = "") {
         self.restaurantName = restaurantName
         self.tableNumber = tableNumber
         self.actionUrl = actionUrl
+    }
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        restaurantName  <-  map["restaurantName"]
+        tableNumber     <-  map["tableNumber"]
+        actionUrl       <-  map["actionUrl"]
     }
 }
