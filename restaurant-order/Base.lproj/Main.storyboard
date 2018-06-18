@@ -97,6 +97,9 @@
                                 <state key="normal" title="SCAN QR CODE">
                                     <color key="titleColor" red="0.62352941176470589" green="0.23921568627450981" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="onScanQrCodeClick:" destination="5Jx-cd-Nnc" eventType="touchUpInside" id="VXg-oS-KA9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQs-Ot-8a0">
                                 <rect key="frame" x="79" y="489" width="216" height="30"/>
@@ -134,11 +137,28 @@
                     <connections>
                         <outlet property="chooseLocationButton" destination="tQs-Ot-8a0" id="QeF-5D-VHe"/>
                         <outlet property="scanQrCodeButton" destination="yTm-xc-faI" id="NrS-OS-F3W"/>
+                        <outlet property="selectedRestaurantName" destination="VnG-rA-5WA" id="y6g-Dy-VJS"/>
+                        <segue destination="JTE-IM-DDd" kind="presentation" identifier="toQRCodeScanner" id="XvT-lI-6cw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmR-WE-ptx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="680.79999999999995" y="132.68365817091455"/>
+        </scene>
+        <!--Code Scan View Controller-->
+        <scene sceneID="m9w-BQ-CIz">
+            <objects>
+                <viewController id="JTE-IM-DDd" customClass="QRCodeScanViewController" customModule="restaurant_order" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PeG-cp-AcM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ju3-2H-Zfn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PFD-mN-bIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1503" y="196"/>
         </scene>
     </scenes>
     <resources>
