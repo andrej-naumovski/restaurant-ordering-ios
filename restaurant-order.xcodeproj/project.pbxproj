@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2401E6C820D5AC8C007651BD /* HttpUrlUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401E6C720D5AC8C007651BD /* HttpUrlUtil.swift */; };
 		24498C1920C7043C00B612FD /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24498C1820C7043C00B612FD /* QRCodeScanViewController.swift */; };
-		24498C1B20C704A000B612FD /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24498C1A20C704A000B612FD /* TableData.swift */; };
+		24498C1B20C704A000B612FD /* QrTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24498C1A20C704A000B612FD /* QrTableData.swift */; };
 		24498C1F20C70C6C00B612FD /* QRCodeScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24498C1E20C70C6C00B612FD /* QRCodeScanViewModel.swift */; };
 		244B5F2B20C3027600029BE4 /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244B5F2A20C3027600029BE4 /* FacebookLogin.swift */; };
 		24AD20B720C46C71005F2345 /* LatLng.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD20B620C46C71005F2345 /* LatLng.swift */; };
@@ -26,6 +26,7 @@
 		24C430DC20C2FC80006EC940 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C430DB20C2FC80006EC940 /* LoginViewModel.swift */; };
 		24DCE94920D835EA00ABC77E /* RestaurantListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCE94820D835EA00ABC77E /* RestaurantListDto.swift */; };
 		24DCE94B20D836C400ABC77E /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCE94A20D836C400ABC77E /* RestaurantViewModel.swift */; };
+		24E1599F20D95AA7006D595B /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1599E20D95AA7006D595B /* TableData.swift */; };
 		24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */; };
 		24EEC29C20C450D000DD0A60 /* location_symbol_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EEC29A20C450D000DD0A60 /* location_symbol_white.png */; };
 		4B59CCF93C0D0E7A4D021950 /* Pods_restaurant_order.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56EB10058237F581E453CFA1 /* Pods_restaurant_order.framework */; };
@@ -34,7 +35,7 @@
 /* Begin PBXFileReference section */
 		2401E6C720D5AC8C007651BD /* HttpUrlUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUrlUtil.swift; sourceTree = "<group>"; };
 		24498C1820C7043C00B612FD /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
-		24498C1A20C704A000B612FD /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
+		24498C1A20C704A000B612FD /* QrTableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrTableData.swift; sourceTree = "<group>"; };
 		24498C1E20C70C6C00B612FD /* QRCodeScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewModel.swift; sourceTree = "<group>"; };
 		244B5F2A20C3027600029BE4 /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		24AD20B620C46C71005F2345 /* LatLng.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatLng.swift; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		24C430DB20C2FC80006EC940 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		24DCE94820D835EA00ABC77E /* RestaurantListDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListDto.swift; sourceTree = "<group>"; };
 		24DCE94A20D836C400ABC77E /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
+		24E1599E20D95AA7006D595B /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
 		24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSelectViewController.swift; sourceTree = "<group>"; };
 		24EEC29A20C450D000DD0A60 /* location_symbol_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_symbol_white.png; sourceTree = "<group>"; };
 		56EB10058237F581E453CFA1 /* Pods_restaurant_order.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_restaurant_order.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,11 +141,12 @@
 			children = (
 				244B5F2A20C3027600029BE4 /* FacebookLogin.swift */,
 				24AD20B620C46C71005F2345 /* LatLng.swift */,
-				24498C1A20C704A000B612FD /* TableData.swift */,
+				24498C1A20C704A000B612FD /* QrTableData.swift */,
 				24B6357820D5A5FE004C20C6 /* ApiResponse.swift */,
 				24B78AA020D5AFED00B786BD /* Restaurant.swift */,
 				24B78AA220D5B15200B786BD /* ApiError.swift */,
 				24DCE94820D835EA00ABC77E /* RestaurantListDto.swift */,
+				24E1599E20D95AA7006D595B /* TableData.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -325,12 +328,13 @@
 				244B5F2B20C3027600029BE4 /* FacebookLogin.swift in Sources */,
 				24B6357C20D5AAB4004C20C6 /* RestaurantService.swift in Sources */,
 				24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */,
-				24498C1B20C704A000B612FD /* TableData.swift in Sources */,
+				24498C1B20C704A000B612FD /* QrTableData.swift in Sources */,
 				24498C1920C7043C00B612FD /* QRCodeScanViewController.swift in Sources */,
 				24B78AA320D5B15200B786BD /* ApiError.swift in Sources */,
 				24C430C420C2ED9A006EC940 /* AppDelegate.swift in Sources */,
 				24AD20B920C46CC2005F2345 /* LocationViewModel.swift in Sources */,
 				24B78AA120D5AFED00B786BD /* Restaurant.swift in Sources */,
+				24E1599F20D95AA7006D595B /* TableData.swift in Sources */,
 				24C430DC20C2FC80006EC940 /* LoginViewModel.swift in Sources */,
 				24AD20B720C46C71005F2345 /* LatLng.swift in Sources */,
 				24DCE94920D835EA00ABC77E /* RestaurantListDto.swift in Sources */,

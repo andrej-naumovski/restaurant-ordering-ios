@@ -11,6 +11,7 @@ import RxSwift
 
 class QRCodeScanViewController: UIViewController {
     private let qrCodeScanViewModel = QRCodeScanViewModel()
+    private let restaurantViewModel = RestaurantViewModel.shared
     
     private let disposeBag = DisposeBag()
 
@@ -23,14 +24,27 @@ class QRCodeScanViewController: UIViewController {
             .asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe() { [unowned self] tableData in
-                //TODO andrej-naumovski 15.06.2018: This is temporary, replace this with actual handling of received data
                 if tableData.element?.tableNumber != -1 {
-                    self.tableDataView.text = tableData.element?.restaurantName
-                    self.tableDataView.frame = self.view.layer.bounds
-                    for sublayer in self.view.layer.sublayers! {
-                        sublayer.removeFromSuperlayer()
+                    if let selectedRestaurant = self.restaurantViewModel.selectedRestaurant.value {
+                        let containsTable = selectedRestaurant.tables!.contains { restaurantTableData in
+                            return restaurantTableData?.id == tableData.element?.id
+                        }
+                        if containsTable {
+                            // TODO andrej-naumovski 19.06.2018: Handle reservation of table and opening of menu
+                        } else {
+                            self.showAlert(withTitle: "Invalid QR Code", withMessage: "The scanned table does not exist for the selected restaurant")
+                        }
                     }
-                    self.view.addSubview(self.tableDataView)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        qrCodeScanViewModel.invalidQrCode
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe() { [unowned self] invalidQrCode in
+                if invalidQrCode.element! {
+                    self.showAlert(withTitle: "Invalid QR Code", withMessage: "The scanned QR Code is not registered with the application")
                 }
             }
             .disposed(by: disposeBag)
@@ -43,5 +57,15 @@ class QRCodeScanViewController: UIViewController {
         } catch {
             print("Error")
         }
+    }
+    
+    private func showAlert(withTitle title: String, withMessage message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+        })
+        
+        present(alertController, animated: true, completion: nil)
     }
 }

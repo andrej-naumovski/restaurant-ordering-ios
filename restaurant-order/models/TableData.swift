@@ -2,30 +2,26 @@
 //  TableData.swift
 //  restaurant-order
 //
-//  Created by Andrej Naumovski on 6/5/18.
+//  Created by Andrej Naumovski on 6/19/18.
 //  Copyright © 2018 Andrej Naumovski. All rights reserved.
 //
 
 import ObjectMapper
 
 struct TableData: Mappable {
-    var restaurantName: String?
+    var id: String?
     var tableNumber: Int?
-    var actionUrl: String?
-    
-    init(restaurantName: String = "", tableNumber: Int = -1, actionUrl: String = "") {
-        self.restaurantName = restaurantName
-        self.tableNumber = tableNumber
-        self.actionUrl = actionUrl
-    }
+    var isAvailable: Bool?
+    var employeeId: String?
     
     init?(map: Map) {
         
     }
     
     mutating func mapping(map: Map) {
-        restaurantName  <-  map["restaurantName"]
-        tableNumber     <-  map["tableNumber"]
-        actionUrl       <-  map["actionUrl"]
+        id          <-  map["_id"]
+        tableNumber <-  map["tableNumber"]
+        isAvailable <-  map["isAvailable"]
+        employeeId  <-  map["employeeId"]
     }
 }
