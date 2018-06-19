@@ -22,7 +22,7 @@ class RestaurantSelectViewController: UIViewController {
     @IBOutlet weak var selectedRestaurantName: UILabel!
     
     private let locationViewModel = LocationViewModel()
-    private let restaurantViewModel = RestaurantViewModel()
+    private let restaurantViewModel = RestaurantViewModel.shared
     
     private var activityIndicator: UIActivityIndicatorView?
     

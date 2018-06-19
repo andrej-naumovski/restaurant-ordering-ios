@@ -18,7 +18,7 @@ struct Restaurant: Mappable {
     }
     
     mutating func mapping(map: Map) {
-        id      <-  map["id"]
+        id      <-  map["_id"]
         name    <-  map["name"]
         tables  <-  map["tables"]
     }

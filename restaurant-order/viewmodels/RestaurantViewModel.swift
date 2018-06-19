@@ -9,8 +9,14 @@
 import RxSwift
 
 class RestaurantViewModel {
+    static let shared = RestaurantViewModel()
+    
     let selectedRestaurant = Variable<Restaurant?>(nil)
     let restaurantList = Variable<[Restaurant]>([])
+    
+    private init() {
+        
+    }
     
     let disposeBag = DisposeBag()
     

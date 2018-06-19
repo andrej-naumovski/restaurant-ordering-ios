@@ -15,7 +15,8 @@ class QRCodeScanViewModel: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         case noCameraAvailable
     }
     
-    var tableData = Variable<TableData>(TableData())
+    var tableData = Variable<QrTableData>(QrTableData())
+    var invalidQrCode = Variable<Bool>(false)
     
     let session = AVCaptureSession()
     
@@ -45,9 +46,8 @@ class QRCodeScanViewModel: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         let metadataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if let qrCodeValue = metadataObject.stringValue {
-            guard let tableData = Mapper<TableData>().map(JSONString: qrCodeValue) else {
-                print("Invalid QR code")
-                //TODO andrej-naumovski 15.06.2018: Handle error redirection here
+            guard let tableData = Mapper<QrTableData>().map(JSONString: qrCodeValue) else {
+                invalidQrCode.value = true
                 return
             }
             
