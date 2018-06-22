@@ -25,7 +25,7 @@ class RestaurantViewModel {
             .getNearestRestaurants(for: userLocation)
             .subscribe { [weak self] response in
                 if let restaurantListResponse = response.event.element {
-                    if let restaurantList = restaurantListResponse.message?.restaurantList {
+                    if let restaurantList = restaurantListResponse.payload?.restaurantList {
                         self?.restaurantList.value = restaurantList
                         if restaurantList.count > 0 {
                             self?.selectedRestaurant.value = restaurantList[0]

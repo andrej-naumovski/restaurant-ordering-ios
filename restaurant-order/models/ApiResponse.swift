@@ -10,11 +10,13 @@ import ObjectMapper
 
 struct ApiResponse<T: Mappable>: Mappable {
     var status: Int?
-    var message: T?
+    var message: String?
+    var payload: T?
     
-    init(status: Int = 500, message: T? = nil) {
+    init(status: Int = 500, message: String? = "", payload: T? = nil) {
         self.status = status
         self.message = message
+        self.payload = payload
     }
     
     init?(map: Map) {
@@ -24,5 +26,6 @@ struct ApiResponse<T: Mappable>: Mappable {
     mutating func mapping(map: Map) {
         status  <-  map["status"]
         message <-  map["message"]
+        payload <-  map["payload"]
     }
 }
