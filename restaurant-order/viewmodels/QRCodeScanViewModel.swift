@@ -54,5 +54,15 @@ class QRCodeScanViewModel: NSObject, AVCaptureMetadataOutputObjectsDelegate {
             self.tableData.value = tableData;
         }
     }
+    
+    func persistTableDataToRealm(_ tableData: QrTableData?) {
+        if let table = tableData {
+            let tableDataToPersist = TableDataPersistenceDto()
+            tableDataToPersist.id = table.id
+            tableDataToPersist.tableNumber.value = table.tableNumber
+            
+            RestaurantPersistenceService.persistTableDataToRealm(tableDataToPersist)
+        }
+    }
 }
 
