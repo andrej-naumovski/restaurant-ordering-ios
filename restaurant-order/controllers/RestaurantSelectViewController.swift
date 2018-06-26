@@ -47,14 +47,30 @@ class RestaurantSelectViewController: UIViewController {
         isPermissionGranted
             .bind(to: chooseLocationButton.rx.isEnabled)
             .disposed(by: disposeBag)
+
+        restaurantViewModel.hasRestaurants
+            .asObservable()
+            .bind(to: scanQrCodeButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        restaurantViewModel.hasRestaurants
+            .asObservable()
+            .bind(to: chooseLocationButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        let activityIndicatorObservable = Observable
+            .combineLatest(restaurantViewModel.hasRestaurants.asObservable(), restaurantViewModel.selectedRestaurant.asObservable()) { [unowned self] (_, _) in
+                self.activityIndicator?.removeFromSuperview()
+            }
+        
+        activityIndicatorObservable
+            .subscribe()
+            .disposed(by: disposeBag)
         
         // Bind current restaurant name to field
         restaurantViewModel.selectedRestaurant
             .asObservable()
-            .map { [unowned self] in
-                self.activityIndicator?.removeFromSuperview()
-                return $0?.name ?? ""
-            }
+            .map { $0?.name ?? "No restaurants available near you" }
             .bind(to: selectedRestaurantName.rx.text)
             .disposed(by: disposeBag)
         
@@ -65,6 +81,7 @@ class RestaurantSelectViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe() { [unowned self] in
                 if let latLng = $0.element! {
+                    print(latLng)
                     self.restaurantViewModel.fetchNearestRestaurants(userLocation: latLng)
                 }
             }

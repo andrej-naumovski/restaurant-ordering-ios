@@ -30,6 +30,7 @@ class RestaurantService {
         
         return json(.get, requestUrl)
             .map { response -> ApiResponse<RestaurantListDto> in
+                print(response)
                 let mapper = Mapper<ApiResponse<RestaurantListDto>>()
                 guard let decodedResponse = mapper.map(JSONObject: response) else {
                     throw ApiError.invalidResponse
