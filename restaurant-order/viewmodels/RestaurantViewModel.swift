@@ -8,6 +8,7 @@
 
 import RxSwift
 
+
 class RestaurantViewModel {
     static let shared = RestaurantViewModel()
     
@@ -45,4 +46,11 @@ class RestaurantViewModel {
         
         RestaurantPersistenceService.persistRestaurantDataToRealm(restaurantPersistenceDto)
     }
+    
+    func loadRestaurantFromRealm() {
+        let restaurantPersistenceDto = RestaurantPersistenceService.loadRestaurantDataFromRealm()
+
+        selectedRestaurant.value = RestaurantPersistenceMapper.toDomainModel(from: restaurantPersistenceDto)
+    }
+    
 }

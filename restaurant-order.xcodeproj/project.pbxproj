@@ -38,6 +38,7 @@
 		24DCE94920D835EA00ABC77E /* RestaurantListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCE94820D835EA00ABC77E /* RestaurantListDto.swift */; };
 		24DCE94B20D836C400ABC77E /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DCE94A20D836C400ABC77E /* RestaurantViewModel.swift */; };
 		24DF892620E2917500443B5B /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DF892520E2917500443B5B /* Money.swift */; };
+		24DF892820E2A27200443B5B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DF892720E2A27200443B5B /* MenuViewController.swift */; };
 		24E1599F20D95AA7006D595B /* TableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1599E20D95AA7006D595B /* TableData.swift */; };
 		24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */; };
 		24EEC29C20C450D000DD0A60 /* location_symbol_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 24EEC29A20C450D000DD0A60 /* location_symbol_white.png */; };
@@ -78,6 +79,7 @@
 		24DCE94820D835EA00ABC77E /* RestaurantListDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListDto.swift; sourceTree = "<group>"; };
 		24DCE94A20D836C400ABC77E /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		24DF892520E2917500443B5B /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
+		24DF892720E2A27200443B5B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		24E1599E20D95AA7006D595B /* TableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableData.swift; sourceTree = "<group>"; };
 		24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSelectViewController.swift; sourceTree = "<group>"; };
 		24EEC29A20C450D000DD0A60 /* location_symbol_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_symbol_white.png; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				24EEC29220C4322200DD0A60 /* RestaurantSelectViewController.swift */,
 				24C430C520C2ED9A006EC940 /* LoginViewController.swift */,
 				24498C1820C7043C00B612FD /* QRCodeScanViewController.swift */,
+				24DF892720E2A27200443B5B /* MenuViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				24B6357C20D5AAB4004C20C6 /* RestaurantService.swift in Sources */,
 				24EEC29320C4322200DD0A60 /* RestaurantSelectViewController.swift in Sources */,
 				24DF892620E2917500443B5B /* Money.swift in Sources */,
+				24DF892820E2A27200443B5B /* MenuViewController.swift in Sources */,
 				24C5FFBB20E286AD00C95F97 /* Menu.swift in Sources */,
 				24498C1B20C704A000B612FD /* QrTableData.swift in Sources */,
 				24C5FFB220E282B800C95F97 /* CategoryPersistenceDto.swift in Sources */,

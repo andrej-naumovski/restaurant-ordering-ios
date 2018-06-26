@@ -32,6 +32,7 @@ class QRCodeScanViewController: UIViewController {
                         if containsTable {
                             self.qrCodeScanViewModel.persistTableDataToRealm(tableData.element)
                             self.restaurantViewModel.persistRestaurantToRealm(selectedRestaurant)
+                            self.performSegue(withIdentifier: "showMenuSegue", sender: nil)
                         } else {
                             self.showAlert(withTitle: "Invalid QR Code", withMessage: "The scanned table does not exist for the selected restaurant")
                         }

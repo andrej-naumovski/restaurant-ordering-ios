@@ -14,6 +14,10 @@ struct Restaurant: Mappable {
     var tables: [TableData]?
     var menu: Menu?
     
+    init() {
+        
+    }
+    
     init?(map: Map) {
         
     }

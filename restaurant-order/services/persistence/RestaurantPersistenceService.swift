@@ -24,7 +24,7 @@ class RestaurantPersistenceService {
         
         let tableData = realm.objects(TableDataPersistenceDto.self)
         
-        if (tableData.count > 0) {
+        if tableData.count > 0 {
             try! realm.write {
                 realm.delete(tableData)
             }
@@ -46,10 +46,18 @@ class RestaurantPersistenceService {
         
         let restaurantObjects = realm.objects(RestaurantPersistenceDto.self)
         
-        if (restaurantObjects.count > 0) {
+        if restaurantObjects.count > 0 {
             try! realm.write {
                 realm.delete(restaurantObjects)
             }
         }
+    }
+    
+    static func loadRestaurantDataFromRealm() -> RestaurantPersistenceDto? {
+        let realm = try! Realm()
+        
+        let restaurantObjects = realm.objects(RestaurantPersistenceDto.self)
+        
+        return restaurantObjects.first
     }
 }

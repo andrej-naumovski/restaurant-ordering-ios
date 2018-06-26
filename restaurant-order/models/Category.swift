@@ -13,6 +13,10 @@ struct Category: Mappable {
     var name: String?
     var items: [MenuItem]?
     
+    init() {
+        
+    }
+    
     init?(map: Map) {
         
     }

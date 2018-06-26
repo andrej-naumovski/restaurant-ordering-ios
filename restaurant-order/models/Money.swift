@@ -12,6 +12,10 @@ struct Money: Mappable {
     var value: String?
     var currency: String?
     
+    init() {
+        
+    }
+    
     init?(map: Map) {
         
     }
