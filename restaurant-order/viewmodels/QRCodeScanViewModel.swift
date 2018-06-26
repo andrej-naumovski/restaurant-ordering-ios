@@ -46,11 +46,11 @@ class QRCodeScanViewModel: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         let metadataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if let qrCodeValue = metadataObject.stringValue {
+            print(qrCodeValue)
             guard let tableData = Mapper<QrTableData>().map(JSONString: qrCodeValue) else {
                 invalidQrCode.value = true
                 return
             }
-            
             self.tableData.value = tableData;
         }
     }

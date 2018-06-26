@@ -30,4 +30,26 @@ class RestaurantPersistenceService {
             }
         }
     }
+    
+    static func persistRestaurantDataToRealm(_ restaurant: RestaurantPersistenceDto) {
+        clearRestaurantDataFromRealm()
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.add(restaurant)
+        }
+    }
+    
+    static func clearRestaurantDataFromRealm() {
+        let realm = try! Realm()
+        
+        let restaurantObjects = realm.objects(RestaurantPersistenceDto.self)
+        
+        if (restaurantObjects.count > 0) {
+            try! realm.write {
+                realm.delete(restaurantObjects)
+            }
+        }
+    }
 }
