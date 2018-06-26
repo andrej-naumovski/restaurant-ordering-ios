@@ -10,5 +10,6 @@ import RealmSwift
 
 class RestaurantPersistenceDto: Object {
     @objc dynamic var id: String?
+    @objc dynamic var name: String?
     @objc dynamic var menu: MenuPersistenceDto?
 }

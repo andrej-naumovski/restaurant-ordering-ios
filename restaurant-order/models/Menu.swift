@@ -12,6 +12,10 @@ struct Menu: Mappable {
     var id: String?
     var categories: [Category]?
     
+    init() {
+        
+    }
+    
     init?(map: Map) {
         
     }

@@ -11,6 +11,7 @@ class RestaurantPersistenceMapper {
         let restaurantPersistenceDto = RestaurantPersistenceDto()
         
         restaurantPersistenceDto.id = restaurant.id
+        restaurantPersistenceDto.name = restaurant.name
         restaurantPersistenceDto.menu = toMenuPersistenceDto(from: restaurant.menu)
         
         return restaurantPersistenceDto
@@ -53,6 +54,7 @@ class RestaurantPersistenceMapper {
             menuItemPersistenceDto.id = menuItem.id
             menuItemPersistenceDto.category = menuItem.category
             menuItemPersistenceDto.price = toMoneyPersistenceDto(from: menuItem.price)
+            menuItemPersistenceDto.name = menuItem.name
             menuItemPersistenceDto.quantity.value = menuItem.quantity
             menuItemPersistenceDto.quantityType = menuItem.quantityType
         }
@@ -68,5 +70,88 @@ class RestaurantPersistenceMapper {
         }
         
         return moneyPersistenceDto
+    }
+    
+    static func toDomainModel(from restaurantPersistenceDtoOptional: RestaurantPersistenceDto?) -> Restaurant? {
+        var restaurant: Restaurant? = nil
+        
+        if let restaurantPersistenceDto = restaurantPersistenceDtoOptional {
+            restaurant = Restaurant()
+            restaurant?.id = restaurantPersistenceDto.id
+            restaurant?.name = restaurantPersistenceDto.name
+            restaurant?.menu = toMenuDomainModel(from: restaurantPersistenceDto.menu)
+        }
+        
+        return restaurant
+    }
+    
+    private static func toMenuDomainModel(from menuPersistenceDtoOptional: MenuPersistenceDto?) -> Menu? {
+        var menu: Menu? = nil
+        
+        if let menuPersistenceDto = menuPersistenceDtoOptional {
+            menu = Menu()
+            menu?.id = menuPersistenceDto.id
+            
+            let mappedCategories = menuPersistenceDto.categories.map(toCategoryDomainModel)
+            
+            var categories: [Category] = []
+            
+            mappedCategories.forEach { category in
+                categories.append(category)
+            }
+            
+            menu?.categories = categories
+        }
+        
+        return menu
+    }
+    
+    private static func toCategoryDomainModel(from categoryPersistenceDtoOptional: CategoryPersistenceDto?) -> Category {
+        var category: Category = Category()
+        
+        if let categoryPersistenceDto = categoryPersistenceDtoOptional {
+            category.id = categoryPersistenceDto.id
+            category.name = categoryPersistenceDto.name
+            
+            let mappedMenuItems = categoryPersistenceDto.items.map(toMenuItemDomainModel)
+            
+            var menuItemArray: [MenuItem] = []
+            
+            mappedMenuItems.forEach { item in
+                menuItemArray.append(item)
+            }
+            
+            category.items = menuItemArray
+        }
+        
+        return category
+    }
+    
+    private static func toMenuItemDomainModel(from menuItemPersistenceDtoOptional: MenuItemPersistenceDto?) -> MenuItem {
+        var menuItem = MenuItem()
+        
+        if let menuItemPersistenceDto = menuItemPersistenceDtoOptional {
+            menuItem.id = menuItemPersistenceDto.id
+            menuItem.category = menuItemPersistenceDto.category
+            menuItem.name = menuItemPersistenceDto.name
+            menuItem.quantity = menuItemPersistenceDto.quantity.value
+            menuItem.quantityType = menuItemPersistenceDto.quantityType
+            menuItem.price = toMoneyDomainModel(from: menuItemPersistenceDto.price)
+        }
+        
+        return menuItem
+    }
+    
+    private static func toMoneyDomainModel(from moneyPersistenceDtoOptional: MoneyPersistenceDto?) -> Money? {
+        var money: Money? = nil
+        
+        if let moneyPersistenceDto = moneyPersistenceDtoOptional {
+            money = Money()
+            
+            money?.value = moneyPersistenceDto.value
+            money?.currency = moneyPersistenceDto.currency
+        }
+        
+        return money
     }
 }
