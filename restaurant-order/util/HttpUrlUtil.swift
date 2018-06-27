@@ -36,7 +36,15 @@ class HttpUrlUtil {
         }
         
         func build() -> String {
-            return "\(self.baseUrl)/\(self.pathVariableString)?\(self.queryParamString)"
+            var url = "\(self.baseUrl)/"
+            if (queryParamString != "") {
+                url = "\(url)\(self.pathVariableString)"
+            }
+            if (pathVariableString != "") {
+                url = "\(url)?\(self.queryParamString)"
+            }
+            
+            return url
         }
     }
 }

@@ -24,6 +24,8 @@
 		24B9079120E3F1160026A515 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9079020E3F1160026A515 /* Order.swift */; };
 		24B9079320E3F25A0026A515 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9079220E3F25A0026A515 /* OrderItem.swift */; };
 		24B9079520E3F5CE0026A515 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9079420E3F5CE0026A515 /* TableViewModel.swift */; };
+		24B9079720E403360026A515 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9079620E403360026A515 /* OrderService.swift */; };
+		24B9079920E405420026A515 /* OrderDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B9079820E405420026A515 /* OrderDto.swift */; };
 		24C430C420C2ED9A006EC940 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C430C320C2ED9A006EC940 /* AppDelegate.swift */; };
 		24C430C620C2ED9A006EC940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C430C520C2ED9A006EC940 /* LoginViewController.swift */; };
 		24C430C920C2ED9A006EC940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C430C720C2ED9A006EC940 /* Main.storyboard */; };
@@ -67,6 +69,8 @@
 		24B9079020E3F1160026A515 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		24B9079220E3F25A0026A515 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		24B9079420E3F5CE0026A515 /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		24B9079620E403360026A515 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		24B9079820E405420026A515 /* OrderDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDto.swift; sourceTree = "<group>"; };
 		24C430C020C2ED9A006EC940 /* restaurant-order.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "restaurant-order.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C430C320C2ED9A006EC940 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24C430C520C2ED9A006EC940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			children = (
 				2457565E20E18DDC0083D304 /* persistence */,
 				24B6357B20D5AAB4004C20C6 /* RestaurantService.swift */,
+				24B9079620E403360026A515 /* OrderService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				24DF892520E2917500443B5B /* Money.swift */,
 				24B9079020E3F1160026A515 /* Order.swift */,
 				24B9079220E3F25A0026A515 /* OrderItem.swift */,
+				24B9079820E405420026A515 /* OrderDto.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				24C5FFB220E282B800C95F97 /* CategoryPersistenceDto.swift in Sources */,
 				24498C1920C7043C00B612FD /* QRCodeScanViewController.swift in Sources */,
 				24C5FFB020E2829C00C95F97 /* MenuPersistenceDto.swift in Sources */,
+				24B9079720E403360026A515 /* OrderService.swift in Sources */,
 				24B78AA320D5B15200B786BD /* ApiError.swift in Sources */,
 				24C430C420C2ED9A006EC940 /* AppDelegate.swift in Sources */,
 				24B9079120E3F1160026A515 /* Order.swift in Sources */,
@@ -436,6 +443,7 @@
 				24DCE94B20D836C400ABC77E /* RestaurantViewModel.swift in Sources */,
 				24C5FFBD20E2874900C95F97 /* Category.swift in Sources */,
 				24B9079320E3F25A0026A515 /* OrderItem.swift in Sources */,
+				24B9079920E405420026A515 /* OrderDto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@ struct Order: Mappable {
     var restaurantId: String?
     var tableId: String?
     var items: [OrderItem]? = []
+    var totalValue: Money?
     
     init() {
         
@@ -27,5 +28,6 @@ struct Order: Mappable {
         restaurantId    <-  map["restaurantId"]
         tableId         <-  map["tableId"]
         items           <-  map["items"]
+        totalValue      <-  map["totalValue"]
     }
 }
