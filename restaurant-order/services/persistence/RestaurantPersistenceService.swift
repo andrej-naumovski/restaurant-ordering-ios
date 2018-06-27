@@ -60,4 +60,12 @@ class RestaurantPersistenceService {
         
         return restaurantObjects.first
     }
+    
+    static func loadTableDataFromRealm() -> TableDataPersistenceDto? {
+        let realm = try! Realm()
+        
+        let tableData = realm.objects(TableDataPersistenceDto.self)
+        
+        return tableData.first
+    }
 }

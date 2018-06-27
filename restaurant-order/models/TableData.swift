@@ -14,6 +14,10 @@ struct TableData: Mappable {
     var isAvailable: Bool?
     var employeeId: String?
     
+    init() {
+        
+    }
+    
     init?(map: Map) {
         
     }
