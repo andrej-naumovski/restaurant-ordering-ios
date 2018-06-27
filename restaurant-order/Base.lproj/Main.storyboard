@@ -194,6 +194,7 @@
                         <viewLayoutGuide key="safeArea" id="vox-4v-Jjm"/>
                     </view>
                     <connections>
+                        <outlet property="createOrderButton" destination="N2b-ti-UhZ" id="98D-Gl-grF"/>
                         <outlet property="menuTable" destination="nI2-P9-fG3" id="B82-Fa-0eF"/>
                     </connections>
                 </viewController>

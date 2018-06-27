@@ -8,11 +8,15 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
-class MenuViewController: UIViewController, UITableViewDataSource {
+class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var menuTable: UITableView!
+    @IBOutlet weak var createOrderButton: UIBarButtonItem!
     
     private let restaurantViewModel = RestaurantViewModel.shared
+    private let orderViewModel = OrderViewModel.shared
+    private let tableViewModel = TableViewModel.shared
     
     private var restaurant: Restaurant?
     
@@ -22,12 +26,35 @@ class MenuViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         menuTable.dataSource = self
+        menuTable.delegate = self
+        
+        let isOrderNotCreatedObservable = orderViewModel.order
+            .asObservable()
+            .map { $0.id == nil }
+        
+        isOrderNotCreatedObservable
+            .bind(to: createOrderButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        tableViewModel.loadTableDataFromRealm()
+        
+        tableViewModel.tableId
+            .asObservable()
+            .subscribe { [unowned self] in
+                if let tableId = $0.element {
+                    self.orderViewModel.updateOrderTableId(tableId)
+                } else {
+                    self.tableViewModel.loadTableDataFromRealm()
+                }
+            }
+            .disposed(by: disposeBag)
 
         restaurantViewModel.selectedRestaurant
             .asObservable()
             .subscribe { [unowned self] in
                 if let restaurant = $0.element {
                     self.restaurant = restaurant
+                    self.orderViewModel.updateOrderRestaurantId(restaurant?.id)
                 } else {
                     self.restaurantViewModel.loadRestaurantFromRealm()
                 }
@@ -54,5 +81,11 @@ class MenuViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return restaurant?.menu?.categories?[section].name ?? ""
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let menuItem = restaurant?.menu?.categories?[indexPath.section].items?[indexPath.row] {
+            orderViewModel.addItemToOrder(withId: menuItem.id, andCategory: menuItem.category)
+        }
     }
 }
