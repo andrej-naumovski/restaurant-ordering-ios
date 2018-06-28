@@ -14,6 +14,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var menuTable: UITableView!
     @IBOutlet weak var createOrderButton: UIBarButtonItem!
     
+    private var activityIndicator: UIActivityIndicatorView? = nil
+    
     private let restaurantViewModel = RestaurantViewModel.shared
     private let orderViewModel = OrderViewModel.shared
     private let tableViewModel = TableViewModel.shared
@@ -34,6 +36,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         isOrderNotCreatedObservable
             .bind(to: createOrderButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        isOrderNotCreatedObservable
+            .subscribe { [unowned self] in
+                if !$0.element! {
+                    self.activityIndicator?.removeFromSuperview()
+                }
+            }
             .disposed(by: disposeBag)
         
         tableViewModel.loadTableDataFromRealm()
@@ -92,9 +102,30 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func onCreateOrderClick(_ sender: Any) {
+        self.activityIndicator = createAndStartActivityIndicator()
         orderViewModel.createOrder()
     }
     @IBAction func onViewOrderClick(_ sender: Any) {
         performSegue(withIdentifier: "toOrderView", sender: nil)
+    }
+    
+    private func createAndStartActivityIndicator() -> UIActivityIndicatorView {
+        if let existingActivityIndicator = self.activityIndicator {
+            view.addSubview(existingActivityIndicator)
+            existingActivityIndicator.startAnimating()
+            return existingActivityIndicator
+        }
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.frame = view.bounds
+        
+        activityIndicator.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.7)
+        
+        activityIndicator.startAnimating()
+        
+        return activityIndicator
     }
 }

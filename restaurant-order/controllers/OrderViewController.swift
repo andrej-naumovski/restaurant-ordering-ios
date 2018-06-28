@@ -15,6 +15,8 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     private let orderViewModel = OrderViewModel.shared
     
+    private var activityIndicator: UIActivityIndicatorView? = nil
+    
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak var confirmOrderButton: UIBarButtonItem!
@@ -29,6 +31,16 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
             .asObservable()
             .map { !$0.isConfirmed }
             .bind(to: confirmOrderButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        orderViewModel.order
+            .asObservable()
+            .map { $0.isConfirmed }
+            .subscribe { [unowned self] in
+                if $0.element! {
+                    self.activityIndicator?.removeFromSuperview()
+                }
+            }
             .disposed(by: disposeBag)
     }
 
@@ -49,7 +61,27 @@ class OrderViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func onConfirmOrderClick(_ sender: Any) {
+        self.activityIndicator = createAndStartActivityIndicator()
         orderViewModel.markOrderAsCompleted()
     }
     
+    private func createAndStartActivityIndicator() -> UIActivityIndicatorView {
+        if let existingActivityIndicator = self.activityIndicator {
+            view.addSubview(existingActivityIndicator)
+            existingActivityIndicator.startAnimating()
+            return existingActivityIndicator
+        }
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.frame = view.bounds
+        
+        activityIndicator.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.7)
+        
+        activityIndicator.startAnimating()
+        
+        return activityIndicator
+    }
 }
