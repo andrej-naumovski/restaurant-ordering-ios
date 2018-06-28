@@ -11,6 +11,8 @@ import ObjectMapper
 struct OrderItem: Mappable {
     var id: String?
     var category: String?
+    var name: String?
+    var price: Money?
     
     init() {
         
@@ -23,5 +25,7 @@ struct OrderItem: Mappable {
     mutating func mapping(map: Map) {
         id          <-  map["_id"]
         category    <-  map["category"]
+        name        <-  map["name"]
+        price       <-  map["price"]
     }
 }

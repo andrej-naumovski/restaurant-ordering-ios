@@ -14,6 +14,7 @@ struct Order: Mappable {
     var tableId: String?
     var items: [OrderItem]? = []
     var totalValue: Money?
+    var isConfirmed: Bool = false
     
     init() {
         
@@ -29,5 +30,6 @@ struct Order: Mappable {
         tableId         <-  map["tableId"]
         items           <-  map["items"]
         totalValue      <-  map["totalValue"]
+        isConfirmed     <-  map["isConfirmed"]
     }
 }

@@ -174,7 +174,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAc-3U-aSb">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="View order" width="203.5" style="plain" id="Rct-6L-9Zq"/>
+                                    <barButtonItem title="View order" width="203.5" style="plain" id="Rct-6L-9Zq">
+                                        <connections>
+                                            <action selector="onViewOrderClick:" destination="onl-Uu-gax" id="Tuq-zT-Iil"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Create order" style="plain" id="N2b-ti-UhZ">
                                         <connections>
                                             <action selector="onCreateOrderClick:" destination="onl-Uu-gax" id="ee3-Pm-Ppa"/>
@@ -200,11 +204,56 @@
                     <connections>
                         <outlet property="createOrderButton" destination="N2b-ti-UhZ" id="98D-Gl-grF"/>
                         <outlet property="menuTable" destination="nI2-P9-fG3" id="B82-Fa-0eF"/>
+                        <segue destination="LlW-ql-afD" kind="presentation" identifier="toOrderView" id="B4j-hq-n1I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZh-x6-eiI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2237.5999999999999" y="325.18740629685158"/>
+        </scene>
+        <!--Order View Controller-->
+        <scene sceneID="cQz-Wq-GKE">
+            <objects>
+                <viewController id="LlW-ql-afD" customClass="OrderViewController" customModule="restaurant_order" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AaJ-dv-1aa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O15-wP-6e6">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Confirm order" width="564" style="plain" id="1WA-47-MO9">
+                                        <connections>
+                                            <action selector="onConfirmOrderClick:" destination="LlW-ql-afD" id="6Ho-cj-yVY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cPl-xK-pk2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="O15-wP-6e6" firstAttribute="bottom" secondItem="KQx-Ko-yMH" secondAttribute="bottom" id="KsK-r1-XRj"/>
+                            <constraint firstItem="O15-wP-6e6" firstAttribute="leading" secondItem="KQx-Ko-yMH" secondAttribute="leading" id="NFt-ft-JDA"/>
+                            <constraint firstItem="cPl-xK-pk2" firstAttribute="leading" secondItem="KQx-Ko-yMH" secondAttribute="leading" id="Ycc-m7-9C7"/>
+                            <constraint firstItem="O15-wP-6e6" firstAttribute="top" secondItem="cPl-xK-pk2" secondAttribute="bottom" id="c5z-e7-shH"/>
+                            <constraint firstItem="cPl-xK-pk2" firstAttribute="trailing" secondItem="KQx-Ko-yMH" secondAttribute="trailing" id="dD5-F6-3Wl"/>
+                            <constraint firstItem="O15-wP-6e6" firstAttribute="trailing" secondItem="KQx-Ko-yMH" secondAttribute="trailing" id="eVz-AK-icm"/>
+                            <constraint firstItem="cPl-xK-pk2" firstAttribute="top" secondItem="AaJ-dv-1aa" secondAttribute="top" id="v37-BC-Q7O"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KQx-Ko-yMH"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmOrderButton" destination="1WA-47-MO9" id="S0J-u5-tee"/>
+                        <outlet property="orderTableView" destination="cPl-xK-pk2" id="0bY-lv-klY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eIc-Yi-oII" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3077.5999999999999" y="294.60269865067471"/>
         </scene>
     </scenes>
     <resources>

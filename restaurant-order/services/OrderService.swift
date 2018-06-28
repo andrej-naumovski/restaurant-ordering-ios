@@ -30,7 +30,7 @@ class OrderService {
         let body = [
             "restaurantId": order?.restaurantId ?? "",
             "tableId": order?.tableId ?? "",
-            "items": itemsBody
+            "items": itemsBody as Any
             ] as [String : Any]
         
         
@@ -38,6 +38,31 @@ class OrderService {
             .map { response -> ApiResponse<OrderDto> in
                 print(response)
                 let mapper = Mapper<ApiResponse<OrderDto>>()
+                guard let decodedResponse = mapper.map(JSONObject: response) else {
+                    throw ApiError.invalidResponse
+                }
+                
+                return decodedResponse
+            }
+    }
+    
+    static func markOrderAsCompleted(with order: Order?) -> Observable<ApiResponse<VoidResponse>> {
+        let url = HttpUrlUtil.RequestUrlBuilder()
+            .base(BASE_ORDER_URL)
+            .withPathVariable(order?.id)
+            .withQueryParams([
+                "restaurantId": order?.restaurantId
+            ])
+            .build()
+        
+        let body = [
+            "isCompleted": true
+        ]
+        
+        return json(.put, url, parameters: body, encoding: URLEncoding.httpBody)
+            .map { response -> ApiResponse<VoidResponse> in
+                print(response)
+                let mapper = Mapper<ApiResponse<VoidResponse>>()
                 guard let decodedResponse = mapper.map(JSONObject: response) else {
                     throw ApiError.invalidResponse
                 }

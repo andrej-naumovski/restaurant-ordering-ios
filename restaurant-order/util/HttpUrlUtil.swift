@@ -17,8 +17,8 @@ class HttpUrlUtil {
             return self
         }
         
-        func withPathVariable(_ variable: String) -> RequestUrlBuilder {
-            self.pathVariableString = "\(self.pathVariableString)\(variable)/"
+        func withPathVariable(_ variable: String?) -> RequestUrlBuilder {
+            self.pathVariableString = "\(self.pathVariableString)\(variable ?? "")/"
             return self
         }
         

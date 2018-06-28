@@ -76,7 +76,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let item = restaurant?.menu?.categories?[indexPath.section].items?[indexPath.row]
         let itemPrice = item?.price
         
-        cell.textLabel?.text = "\(item?.name ?? "") \(itemPrice?.value ?? "") \(itemPrice?.currency ?? "")"
+        cell.textLabel?.text = "\(item?.name ?? "") \(itemPrice?.getStringRepresentation() ?? "")"
         
         return cell
     }
@@ -87,11 +87,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let menuItem = restaurant?.menu?.categories?[indexPath.section].items?[indexPath.row] {
-            orderViewModel.addItemToOrder(withId: menuItem.id, andCategory: menuItem.category)
+            orderViewModel.addItemToOrder(withId: menuItem.id, andCategory: menuItem.category, andName: menuItem.name, andPrice: menuItem.price)
         }
     }
     
     @IBAction func onCreateOrderClick(_ sender: Any) {
         orderViewModel.createOrder()
+    }
+    @IBAction func onViewOrderClick(_ sender: Any) {
+        performSegue(withIdentifier: "toOrderView", sender: nil)
     }
 }
