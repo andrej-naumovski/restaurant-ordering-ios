@@ -27,9 +27,11 @@ class OrderViewModel {
         order.value.tableId = id
     }
     
-    func addItemToOrder(withId id: String?, andCategory category: String?) {
+    func addItemToOrder(withId id: String?, andCategory category: String?, andName name: String?, andPrice price: Money?) {
         var orderItem = OrderItem()
         orderItem.category = category
+        orderItem.name = name
+        orderItem.price = price
         orderItem.id = id
         
         order.value.items?.append(orderItem)
@@ -43,8 +45,21 @@ class OrderViewModel {
                 if let response = response.element {
                     if 200...299 ~= response.status! {
                         if let order = response.payload?.order {
-                            self?.order.value = order
+                            self?.order.value.id = order.id
                         }
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func markOrderAsCompleted() {
+        OrderService
+            .markOrderAsCompleted(with: order.value)
+            .subscribe { [weak self] response in
+                if let response = response.element {
+                    if 200...299 ~= response.status! {
+                        self?.order.value.isConfirmed = true
                     }
                 }
             }

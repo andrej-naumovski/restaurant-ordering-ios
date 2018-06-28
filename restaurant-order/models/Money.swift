@@ -24,4 +24,8 @@ struct Money: Mappable {
         value       <-  map["value"]
         currency    <-  map["currency"]
     }
+    
+    func getStringRepresentation() -> String {
+        return "\(value ?? "") \(currency ?? "")"
+    }
 }
